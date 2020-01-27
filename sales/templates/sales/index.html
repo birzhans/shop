@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	List of sales
+{% endblock %}
+
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3">
+{% for sale in sales %}
+<div class="col mb-4">
+<div class="card" style="width: 18rem;">
+  <img src="{{sale.photo.url}}" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">{{ sale.title }}</h5>
+    <p class="card-text">{{ product.body|truncatewords:15}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Просмотры: {{ sale.view_count}}</li>
+    <li class="list-group-item">{{ sale.date_pub }}</li>
+  </ul>
+  <div class="card-body">
+    <a href="{{ sale.get_absolute_url }}" class="btn btn-primary">Просмотр</a><br>
+  </div>
+  </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+

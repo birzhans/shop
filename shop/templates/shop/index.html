@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Lady's Secret
+{% endblock %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3">
+{% for product in products %}
+<div class="col mb-4">
+<div class="card" style="width: 18rem;">
+  <img src="{{product.photo.url}}" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text">{{ product.body|truncatewords:15}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Цена: {{ product.price}}</li>
+    <li class="list-group-item">Просмотры: {{ product.view_count}}</li>
+    {% for category in product.categories.all%}
+    <li class="list-group-item"><a href="{{category.get_absolute_url}}" class="card-link">Категория: {{category.title}}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="card-body">
+    <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Просмотр</a><br>
+  </div>
+</div>
+</div>
+  {% endfor %}
+</div>
+{% endblock %}

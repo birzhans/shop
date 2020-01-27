@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{sale.title}} - {{block.super}}
+{% endblock %}
+
+{% block content %}
+	<div style="padding-left: 100px;">
+	<h1 class="mt-5">
+		{{sale.title}}
+	</h1>
+
+	<p>
+		Описание: {{sale.body}}
+	</p>
+
+	<p>
+		Просмотры: {{sale.view_count}}
+	</p>
+
+	<p>
+		<img src="{{sale.photo.url}}" style="height: 300px;">
+	</p>
+</div>
+{% endblock %}
